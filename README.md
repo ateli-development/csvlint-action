@@ -1,0 +1,2 @@
+# csvlint-action
+CSV checker
