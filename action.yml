@@ -1,0 +1,5 @@
+name: 'CSV Lint'
+description: 'Lint CSV files with csvlint'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
