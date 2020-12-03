@@ -22,11 +22,19 @@ echo "$CSV_FILES" | while read FILE ; do
       continue
     fi
     echo $FILE
-#     if xmllint $FILE --noout ; then
-#       echo "xml-syntax is fine: $FILE"
-#     else
-#       ERROR=101
-#     fi
+    ROW_COUNT=$(cat  ${FILE} | xargs -l echo | wc -l)
+
+    for ((n=1;n<=${ROW_COUNT};n++))
+    do
+      ROW_VALUE=$(sed -n "${n}p" ${FILE})
+      ROW_COMMAS_COUNT=$(awk -F"," '{print NF-1}' <<<  $ROW_VALUE)
+      ROW_COLUMNS_COUNT=$((ROW_COMMAS_COUNT+1))
+      if [[ $ROW_COLUMNS_COUNT != 2 ]]
+      then
+        echo "$ROW_VALUE on line $n should have 2 columns, $ROW_COLUMNS_COUNT Columns gotted"
+        ERROR=101
+      fi
+    done
 done
 
 exit ${ERROR}
