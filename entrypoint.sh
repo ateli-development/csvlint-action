@@ -32,5 +32,5 @@ echo "$CSV_FILES" | while read FILE ; do
       fi
     done
 done
-
+echo "***${ERROR}"
 exit $ERROR
