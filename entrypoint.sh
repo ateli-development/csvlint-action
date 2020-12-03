@@ -25,11 +25,9 @@ echo "$CSV_FILES" | while read FILE ; do
     for ((n=1;n<=${ROW_COUNT};n++))
     do
       ROW_VALUE=$(sed -n "${n}p" ${FILE})
-      ROW_COMMAS_COUNT=$(awk -F"\"" '{print NF-1}' <<<  $ROW_VALUE)
-      ROW_COLUMNS_COUNT=$((ROW_COMMAS_COUNT+1))
-      if [[ $ROW_COLUMNS_COUNT != 4 ]]
+      if [[ ! $ROW_VALUE =~ ^\"[^\"]+\",\"[^\"]+\"$ ]]
       then
-        echo "line $n in ${FILE} should have 2 columns, $ROW_COLUMNS_COUNT Columns gotted"
+        echo "line $n in ${FILE} should have exact 2 columns"
         ERROR=101
       fi
     done
