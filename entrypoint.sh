@@ -26,11 +26,9 @@ echo "$CSV_FILES" | while read FILE ; do
       ROW_VALUE=$(sed -n "${n}p" ${FILE})
       if [[ ! $ROW_VALUE =~ ^\"[^\"]+\",\"[^\"]+\"$ ]]
       then
-        ERROR=101
         echo "line $n in ${FILE} should have exact 2 columns"
+        exit 101
       fi
     done
 done
-wait
-echo "***${ERROR}"
 exit $ERROR
