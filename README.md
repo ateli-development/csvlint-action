@@ -18,6 +18,6 @@ jobs:
       uses: actions/checkout@master
     - name: csv lint
       uses: ateli-development/csvlint-action@master
-      env
+      env:
         MODIFIED_FILES: ${{ steps.file_changes.outputs.files}}
 ```
