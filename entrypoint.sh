@@ -33,4 +33,4 @@ echo "$CSV_FILES" | while read FILE ; do
     done
 done
 
-exit 101
+exit $ERROR
