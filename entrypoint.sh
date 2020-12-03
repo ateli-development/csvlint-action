@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-set -e
 ERROR=0
 
 
