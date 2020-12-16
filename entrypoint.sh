@@ -9,14 +9,13 @@ echo " ************** MODIFIED FILES"
 printf ${MODIFIED_FILES}
 
 printf "\n*****************************\n"
-echo $(pwd)
-printf "\n*****************************\n"
 
-#PATHS=$(printf ${MODIFIED_FILES} | tr \\n '\n')
-#CSV_FILES=$(grep -P '.+\.csv$' <<< $PATHS)
+PHP_RESULT=$(php /csv-translation-validator.php ${MODIFIED_FILES})
+IS_FAILED=$(echo $PHP_RESULT | grep "failed" | wc -l)
 
-
-php /csv-translation-validator.php ${MODIFIED_FILES}
-
+if [[ $IS_FAILED == 1 ]]
+then
+  exit 101
+fi
 
 exit 0
