@@ -13,6 +13,10 @@ printf "\n*****************************\n"
 PHP_RESULT=$(php /csv-translation-validator.php ${MODIFIED_FILES})
 IS_FAILED=$(echo $PHP_RESULT | grep "failed" | wc -l)
 
+
+printf $PHP_RESULT
+
+
 if [[ $IS_FAILED == 1 ]]
 then
   exit 101
