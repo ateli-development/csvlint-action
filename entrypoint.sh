@@ -12,7 +12,7 @@ printf "\n*****************************\n"
 
 PHP_RESULT=$(php /csv-translation-validator.php ${MODIFIED_FILES})
 
-echo $PHP_RESULT
+echo "$PHP_RESULT"
 
 IS_FAILED=$(echo $PHP_RESULT | grep "failed" | wc -l)
 
