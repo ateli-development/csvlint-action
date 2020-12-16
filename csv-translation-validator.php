@@ -18,6 +18,6 @@ foreach ($modifiedFiles as $file){
             continue;
         }
 
-        echo $file.": There are ".count($columns)." columns in the $i line, it should be 2";
+        echo $file.": There are ".count($columns)." columns in the $i line, it should be 2\n";
     }
 }
