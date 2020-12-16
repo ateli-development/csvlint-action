@@ -5,6 +5,9 @@ require_once $mageFilename;
 $app = Mage::app();
 
 $modifiedFiles=explode('\n',$argv[1]);
+$modifiedFiles = array_filter($modifiedFiles, function ($item) {
+    return preg_match('/^.+\.csv$/',$item);
+});
 foreach ($modifiedFiles as $file){
     $csvParser = (new Varien_File_Csv())->getData($file);
 
