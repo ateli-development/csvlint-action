@@ -14,7 +14,7 @@ foreach ($modifiedFiles as $file){
     $i = 0;
     foreach ($csvParser as $columns){
         $i++;
-        if(count($columns) == 2){
+        if(count($columns) == 3){
             continue;
         }
 
