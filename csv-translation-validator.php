@@ -18,7 +18,7 @@ foreach ($modifiedFiles as $file){
             continue;
         }
 
-        echo $file." validation failed: There are ".count($columns)." columns in the $i line, it should be 2\n";
+        echo $file." validation failed: There are ".count($columns)." columns in line $i, it should be 2\n";
         die();
     }
 }
