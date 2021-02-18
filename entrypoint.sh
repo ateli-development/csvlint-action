@@ -3,13 +3,6 @@
 
 ERROR=0
 
-
-echo " ************** MODIFIED FILES"
-
-printf ${MODIFIED_FILES}
-
-printf "\n*****************************\n"
-
 PHP_RESULT=$(php /csv-translation-validator.php ${MODIFIED_FILES})
 
 echo "$PHP_RESULT"
