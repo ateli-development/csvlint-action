@@ -4,12 +4,10 @@ $mageFilename = __DIR__.'/github/workspace/app/Mage.php';
 require_once $mageFilename;
 $app = Mage::app();
 
-$modifiedFiles=explode('\n',$argv[1]);
-$modifiedFiles = array_filter($modifiedFiles, function ($item) {
-    return preg_match('/^.+\.csv$/',$item);
-});
+$modifiedFiles = glob('app/locale/*/*.csv');
+
 foreach ($modifiedFiles as $file){
-    $csvParser = (new Varien_File_Csv())->getData("/github/workspace/{$file}");
+	$csvParser = (new Varien_File_Csv())->getData("{$file}");
 
     $i = 0;
     foreach ($csvParser as $columns){
@@ -19,6 +17,9 @@ foreach ($modifiedFiles as $file){
         }
 
         echo $file." validation failed: There are ".count($columns)." columns in line $i, it should be 2\n";
-        die();
     }
+}
+
+if($i > 0){
+    exit(101);
 }
