@@ -2,7 +2,7 @@
 $mageFilename = __DIR__.'/github/workspace/app/Mage.php';
 
 require_once $mageFilename;
-$app = Mage::app();
+// $app = Mage::app();
 
 $modifiedFiles = glob('app/locale/*/*.csv');
 
