@@ -4,15 +4,15 @@ $mageFilename = __DIR__.'/github/workspace/app/Mage.php';
 require_once $mageFilename;
 // $app = Mage::app();
 
-$modifiedFiles = glob('app/locale/*/*.csv');
+$allCsvFiles = glob('app/locale/*/*.csv');
 
-foreach ($modifiedFiles as $file){
+foreach ($allCsvFiles as $file) {
 	$csvParser = (new Varien_File_Csv())->getData("{$file}");
 
     $i = 0;
-    foreach ($csvParser as $columns){
+    foreach ($csvParser as $columns) {
         $i++;
-        if(count($columns) == 2){
+        if (count($columns) == 2) {
             continue;
         }
 
@@ -20,6 +20,6 @@ foreach ($modifiedFiles as $file){
     }
 }
 
-if($i > 0){
+if ($i > 0) {
     exit(101);
 }
