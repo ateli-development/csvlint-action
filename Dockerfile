@@ -1,4 +1,4 @@
-FROM php:7.4-cli
+FROM php:8.1-cli
 
 RUN apt-get update && \
     apt-get -y --no-install-recommends install libxml2-utils && \
